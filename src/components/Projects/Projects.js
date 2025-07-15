@@ -2,12 +2,9 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import leaf from "../../Assets/Projects/leaf.png";
-import emotion from "../../Assets/Projects/emotion.png";
-import editor from "../../Assets/Projects/codeEditor.png";
 import DeliverAsYouGo from "../../Assets/Projects/DeliverAsYouGo.png";
-import suicide from "../../Assets/Projects/suicide.png";
-import bitsOfCode from "../../Assets/Projects/blog.png";
+import Logo from "../../Assets/Projects/Logo.png";
+
 
 function Projects() {
   return (
@@ -31,25 +28,21 @@ function Projects() {
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col md={4} className="project-card"color="#3b82f6">
             <ProjectCard
-              imgPath={bitsOfCode}
+              imgPath={Logo}
               isBlog={false}
-              title="Bits-0f-C0de"
-              description="My personal blog page build with Next.js and Tailwind Css which takes the content from makdown files and renders it using Next.js. Supports dark mode and easy to write blogs using markdown."
-              ghLink="https://github.com/soumyajit4419/Bits-0f-C0de"
-              demoLink="https://blogs.soumya-jit.tech/"
-            />
-          </Col>
+              title="Pharmacy Zone"
+              description="Pharmacy Zone is a Laravel-based backend project designed to enhance user access to essential pharmaceutical services. The platform allows users to:
 
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={editor}
-              isBlog={false}
-              title="Editor.io"
-              description="Online code and markdown editor build with react.js. Online Editor which supports html, css, and js code with instant view of website. Online markdown editor for building README file which supports GFM, Custom Html tags with toolbar and instant preview.Both the editor supports auto save of work using Local Storage"
-              ghLink="https://github.com/soumyajit4419/Editor.io"
-              demoLink="https://editor.soumya-jit.tech/"              
+Browse and purchase medicines with detailed descriptions, including allergy information and precautions.
+
+View available pharmacies nearby to either place an order or visit in person.
+
+Engage in live chat with licensed pharmacists, enabling real-time answers to any medical or product-related questions.
+
+Pharmacy Zone aims to bridge the gap between patients and pharmacists by offering a reliable, accessible, and informative digital healthcare experience."
+              ghLink="https://github.com/mhmd1441/Pharmacy-Project"
             />
           </Col>
         </Row>
