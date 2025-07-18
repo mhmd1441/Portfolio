@@ -25,7 +25,7 @@ function Home() {
                 <strong className="main-name"> Mohamad Moumneh</strong>
               </h1>
 
-              <div style={{ padding: 50, textAlign: "left" }}>
+              <div className="Loop" style={{ padding: 50, textAlign: "left",color: "#000"}}>
                 <Type />
               </div>
             </Col>
@@ -35,7 +35,12 @@ function Home() {
                 src={homeLogo}
                 alt="home pic"
                 className="img-fluid"
-                style={{ maxHeight: "450px" }}
+                style={{
+                  maxHeight: "445px", 
+                  maxWidth: "calc(100% - 5px)",
+                  borderRadius: "10px", 
+                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                }}
               />
             </Col>
           </Row>
