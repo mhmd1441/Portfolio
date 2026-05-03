@@ -1,52 +1,43 @@
-import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { CgCPlusPlus } from "react-icons/cg";
 import {
   DiJavascript1,
-  DiReact,
-  DiNodejs,
-  DiMongodb,
-  DiPython,
   DiJava,
-  DiLaravel,
-  DiMysql,
 } from "react-icons/di";
 import {
+  SiDotnet,
+  SiExpo,
+  SiLaravel,
+  SiMysql,
+  SiPostman,
   SiPostgresql,
+  SiReact,
 } from "react-icons/si";
+
+const skills = [
+  { label: "React", icon: <SiReact /> },
+  { label: "React Native", icon: <SiReact /> },
+  { label: "Expo", icon: <SiExpo /> },
+  { label: "Laravel", icon: <SiLaravel /> },
+  { label: "Laravel Sanctum", icon: <SiLaravel /> },
+  { label: "ASP.NET Core", icon: <SiDotnet /> },
+  { label: "PostgreSQL", icon: <SiPostgresql /> },
+  { label: "MySQL", icon: <SiMysql /> },
+  { label: "JavaScript", icon: <DiJavascript1 /> },
+  { label: "Java", icon: <DiJava /> },
+  { label: "C++", icon: <CgCPlusPlus /> },
+  { label: "REST APIs", icon: <SiPostman /> },
+];
+
 function Techstack() {
   return (
-    <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-      <Col xs={4} md={2} className="tech-icons">
-        <CgCPlusPlus />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiJavascript1 />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiNodejs />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiReact />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiMongodb />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiPostgresql />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiPython />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiJava />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiLaravel />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiMysql />
-      </Col>
+    <Row className="skill-grid">
+      {skills.map((skill) => (
+        <Col xs={6} sm={4} md={3} lg={2} className="tech-icons" key={skill.label}>
+          {skill.icon}
+          <span>{skill.label}</span>
+        </Col>
+      ))}
     </Row>
   );
 }

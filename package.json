@@ -3,24 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-pdf/renderer": "^2.2.0",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.26.1",
-    "bootstrap": "^5.3.6",
-    "react": "^17.0.2",
-    "react-bootstrap": "^2.2.1",
-    "react-dom": "^17.0.2",
-    "react-github-calendar": "^3.2.2",
-    "react-icons": "^4.8.0",
-    "react-parallax-tilt": "^1.7.42",
-    "react-pdf": "^5.7.1",
-    "react-router-dom": "^6.2.2",
-    "react-scripts": "5.0.0",
-    "react-tsparticles": "^1.42.2",
-    "typewriter-effect": "^2.18.2",
-    "web-vitals": "^2.1.4"
+    "bootstrap": "^5.3.8",
+    "react": "^19.2.5",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.2.5",
+    "react-github-calendar": "^5.0.6",
+    "react-icons": "^5.6.0",
+    "react-parallax-tilt": "^1.7.326",
+    "react-router-dom": "^7.14.2",
+    "react-tsparticles": "^2.12.2",
+    "typewriter-effect": "^2.22.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,14 +20,21 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-    
-
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^react-router$": "<rootDir>/node_modules/react-router/dist/development/index.js",
+      "^react-router/dom$": "<rootDir>/node_modules/react-router/dist/development/dom-export.js",
+      "^react-router-dom$": "<rootDir>/node_modules/react-router-dom/dist/index.js",
+      "^react-github-calendar$": "<rootDir>/src/test/mocks/reactGithubCalendar.js",
+      "^react-tsparticles$": "<rootDir>/src/test/mocks/reactTsparticles.js"
+    }
   },
   "browserslist": {
     "production": [
@@ -48,5 +47,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "react-scripts": "^5.0.1"
   }
 }

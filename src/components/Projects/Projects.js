@@ -11,47 +11,67 @@ function Projects() {
     <Container fluid className="project-section">
       <Particle />
       <Container>
+        <p className="section-eyebrow">Portfolio</p>
         <h1 className="project-heading">
-          My Recent <strong className="purple">Works </strong>
+          Selected <strong className="purple">Projects</strong>
         </h1>
-        <p style={{ color: "white" }}>
-          Here are a few projects I've worked on recently.
+        <p className="section-subtitle">
+          A focused look at the systems I have built across backend APIs,
+          mobile-first products, and full-stack web applications.
         </p>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Row className="project-grid">
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={DeliverAsYouGo}
               isBlog={false}
               title="Deliver As You Go"
-              description="The Delivery App System connects clients and drivers via a scalable web platform, enabling real-time tracking, multi-payment options, and automated driver allocation, while admins manage approvals, loyalty programs, and analytics. Built with Laravel, MySQL, and APIs (Google Maps, Stripe), it ensures secure, user-friendly delivery management with features like live chat, GPS tracking, and multi-currency support."
+              description="A delivery management platform connecting clients, drivers, and admins with real-time tracking, payments, automated driver allocation, live chat, and analytics."
+              tags={["Laravel", "MySQL", "Google Maps", "Stripe"]}
               ghLink="https://github.com/RaphaelM02/Deliver-As-You-Go.git"
             />
           </Col>
 
-          <Col md={4} className="project-card" color="#3b82f6">
+          <Col md={4} className="project-card">
             <ProjectCard
               imgPath={Logo}
               isBlog={false}
               title="Pharmacy Zone"
-              description="Pharmacy Zone is a Laravel-based backend project designed to enhance 
-              user access to essential pharmaceutical services. The platform allows users to:
-              Browse and purchase medicines with detailed descriptions, including allergy information and precautions.
-              View available pharmacies nearby to either place an order or visit in person.
-              Engage in live chat with licensed pharmacists, enabling real-time answers to any medical or product-related questions.
-              Pharmacy Zone aims to bridge the gap between patients and pharmacists by offering a reliable, accessible, and informative digital healthcare experience."
+              description="A Laravel healthcare platform for browsing medicines, locating pharmacies, placing orders, and connecting users with pharmacists through real-time chat."
+              tags={["Laravel", "MySQL", "Live Chat", "Healthcare"]}
               ghLink="https://github.com/mhmd1441/Pharmacy-Project"
             />
           </Col>
 
-          <Col md={4} className="project-card" color="#3b82f6">
+          <Col md={4} className="project-card">
             <ProjectCard
               imgPath={portfoliologo}
               isBlog={false}
               title="Personal Portfolio"
-              description="This is my personal portfolio website, showcasing my skills, projects,
-               and experience as a developer. Built with React, JavaScript, and CSS,
-                it serves as a central place to highlight my work and share what I’m learning."
+              description="A responsive portfolio website built to present my skills, projects, resume, and developer profile in a polished, recruiter-friendly format."
+              tags={["React", "Bootstrap", "CSS", "Portfolio"]}
               ghLink="https://github.com/mhmd1441/Portfolio.git"
+            />
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={portfoliologo}
+              isBlog={false}
+              title="CommuTech"
+              description="A mobile-first civic technology platform for reporting infrastructure issues, tracking citizen reports, assigning workers, and enabling supervisor oversight."
+              tags={["React Native", "Expo", "Laravel", "PostgreSQL"]}
+              ghLink="https://github.com/mhmd1441/CommuTech"
+            />
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={portfoliologo}
+              isBlog={false}
+              title="Task Management System"
+              description="A role-based enterprise workflow system with secure API design, MVC integration, JWT authentication, RBAC, DTOs, and Swagger documentation."
+              tags={["ASP.NET Core", "MVC", "JWT", "PostgreSQL"]}
+              ghLink="https://github.com/mhmd1441/Advanced-Programming"
             />
           </Col>
         </Row>

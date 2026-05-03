@@ -1,52 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container, Row } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import pdf from "../../Assets/../Assets/Mohamad_Moumneh_CV.pdf";
+import cvPreview from "../../Assets/cv-preview.png";
 import { AiOutlineDownload } from "react-icons/ai";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+import pdfFile from "../../Assets/Mohamad_Moumneh_CV.pdf";
+
+const pdfFileName = "Mohamad_Moumneh_CV.pdf";
 
 function ResumeNew() {
-  const [width, setWidth] = useState(1200);
-
-  useEffect(() => {
-    setWidth(window.innerWidth);
-  }, []);
+  const handleDownload = async () => {
+    const response = await fetch(pdfFile);
+    const blob = await response.blob();
+    const blobUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = blobUrl;
+    link.download = pdfFileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(blobUrl);
+  };
 
   return (
     <div>
       <Container fluid className="resume-section">
         <Particle />
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={pdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
-          >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
-        </Row>
-
         <Row className="resume">
-          <Document file={pdf} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-          </Document>
-        </Row>
-
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={pdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
-          >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
+          <div className="resume-preview-shell">
+            <div className="resume-preview-header">
+              <div>
+                <p className="resume-label">Resume</p>
+                <h1>Mohamad Moumneh</h1>
+                <p className="resume-copy">
+                  A concise overview of my skills, projects, education, and
+                  development experience.
+                </p>
+              </div>
+              <button
+                onClick={handleDownload}
+                className="resume-download-btn btn btn-primary"
+              >
+                <AiOutlineDownload />
+                &nbsp;Download CV
+              </button>
+            </div>
+            <div className="resume-preview-frame">
+              <img
+                className="resume-preview-image"
+                src={cvPreview}
+                alt="Mohamad Moumneh CV preview"
+              />
+            </div>
+          </div>
         </Row>
       </Container>
     </div>

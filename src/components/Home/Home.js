@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import homeLogo from "../../Assets/avatarHome.png";
 import Particle from "../Particle";
@@ -11,37 +10,24 @@ function Home() {
       <Container fluid className="home-section" id="home">
         <Particle />
         <Container className="home-content">
-          <Row>
+          <Row className="home-row">
             <Col md={7} className="home-header">
-              <h1 style={{ paddingBottom: 15 }} className="heading">
-                Hello!{" "}
-                <span className="wave" role="img" aria-labelledby="wave">
-                  👋🏻
-                </span>
-              </h1>
-
+              <p className="hero-kicker">Backend Developer | Full-Stack Builder</p>
+              <h1 className="heading">Hello, I'm</h1>
               <h1 className="heading-name">
-                I'M
-                <strong className="main-name"> Mohamad Moumneh</strong>
+                <strong className="main-name">Mohamad Moumneh</strong>
               </h1>
-
-              <div className="Loop" style={{ padding: 50, textAlign: "left",color: "#000"}}>
+              <div className="Loop">
                 <Type />
               </div>
+              <p className="hero-summary">
+                I build practical, scalable web and mobile systems with Laravel,
+                React, React Native, PostgreSQL, and ASP.NET Core.
+              </p>
             </Col>
 
-            <Col md={5} style={{ paddingBottom: 20 }}>
-              <img
-                src={homeLogo}
-                alt="home pic"
-                className="img-fluid"
-                style={{
-                  maxHeight: "445px", 
-                  maxWidth: "calc(100% - 5px)",
-                  borderRadius: "10px", 
-                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                }}
-              />
+            <Col md={5} className="home-visual">
+              <img src={homeLogo} alt="home pic" className="img-fluid hero-image" />
             </Col>
           </Row>
         </Container>
