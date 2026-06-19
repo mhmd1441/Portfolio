@@ -33,7 +33,7 @@ function Techstack() {
   return (
     <Row className="skill-grid">
       {skills.map((skill) => (
-        <Col xs={6} sm={4} md={3} lg={2} className="tech-icons" key={skill.label}>
+        <Col xs={6} sm={4} md={3} lg={2} className="tech-icons reveal" key={skill.label}>
           {skill.icon}
           <span>{skill.label}</span>
         </Col>

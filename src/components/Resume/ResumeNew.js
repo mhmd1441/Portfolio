@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Particle from "../Particle";
 import cvPreview from "../../Assets/cv-preview.png";
@@ -8,6 +8,9 @@ import pdfFile from "../../Assets/Mohamad_Moumneh_CV.pdf";
 const pdfFileName = "Mohamad_Moumneh_CV.pdf";
 
 function ResumeNew() {
+  useEffect(() => {
+    document.title = "Resume | Mohamad Moumneh";
+  }, []);
   const handleDownload = async () => {
     const response = await fetch(pdfFile);
     const blob = await response.blob();

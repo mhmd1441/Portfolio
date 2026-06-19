@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 import DeliverAsYouGo from "../../Assets/Projects/DeliverAsYouGo.png";
 import portfoliologo from "../../Assets/logo.png";
-import Logo from "../../Assets/Projects/PharmacyLogo.png";
+import PharmacyLogo from "../../Assets/Projects/PharmacyLogo.png";
+import CommuTechLogo from "../../Assets/Projects/CommuTechLogo.png";
+import TaskFlowLogo from "../../Assets/Projects/TaskFlowLogo.png";
 
 function Projects() {
+  useEffect(() => {
+    document.title = "Projects | Mohamad Moumneh";
+  }, []);
+
   return (
     <Container fluid className="project-section">
       <Particle />
       <Container>
-        <p className="section-eyebrow">Portfolio</p>
-        <h1 className="project-heading">
+        <p className="section-eyebrow reveal">Portfolio</p>
+        <h1 className="project-heading reveal">
           Selected <strong className="purple">Projects</strong>
         </h1>
-        <p className="section-subtitle">
+        <p className="section-subtitle reveal">
           A focused look at the systems I have built across backend APIs,
           mobile-first products, and full-stack web applications.
         </p>
         <Row className="project-grid">
-          <Col md={4} className="project-card">
+          <Col md={4} className="project-card reveal">
             <ProjectCard
               imgPath={DeliverAsYouGo}
               isBlog={false}
@@ -31,9 +37,9 @@ function Projects() {
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col md={4} className="project-card reveal">
             <ProjectCard
-              imgPath={Logo}
+              imgPath={PharmacyLogo}
               isBlog={false}
               title="Pharmacy Zone"
               description="A Laravel healthcare platform for browsing medicines, locating pharmacies, placing orders, and connecting users with pharmacists through real-time chat."
@@ -42,20 +48,9 @@ function Projects() {
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col md={4} className="project-card reveal">
             <ProjectCard
-              imgPath={portfoliologo}
-              isBlog={false}
-              title="Personal Portfolio"
-              description="A responsive portfolio website built to present my skills, projects, resume, and developer profile in a polished, recruiter-friendly format."
-              tags={["React", "Bootstrap", "CSS", "Portfolio"]}
-              ghLink="https://github.com/mhmd1441/Portfolio.git"
-            />
-          </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={portfoliologo}
+              imgPath={CommuTechLogo}
               isBlog={false}
               title="CommuTech"
               description="A mobile-first civic technology platform for reporting infrastructure issues, tracking citizen reports, assigning workers, and enabling supervisor oversight."
@@ -64,14 +59,25 @@ function Projects() {
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col md={4} className="project-card reveal">
             <ProjectCard
-              imgPath={portfoliologo}
+              imgPath={TaskFlowLogo}
               isBlog={false}
-              title="Task Management System"
+              title="TaskFlow"
               description="A role-based enterprise workflow system with secure API design, MVC integration, JWT authentication, RBAC, DTOs, and Swagger documentation."
               tags={["ASP.NET Core", "MVC", "JWT", "PostgreSQL"]}
               ghLink="https://github.com/mhmd1441/Advanced-Programming"
+            />
+          </Col>
+
+          <Col md={4} className="project-card reveal">
+            <ProjectCard
+              imgPath={portfoliologo}
+              isBlog={false}
+              title="Personal Portfolio"
+              description="A responsive portfolio website built to present my skills, projects, resume, and developer profile in a polished, recruiter-friendly format."
+              tags={["React", "Bootstrap", "CSS", "Portfolio"]}
+              ghLink="https://github.com/mhmd1441/Portfolio.git"
             />
           </Col>
         </Row>
