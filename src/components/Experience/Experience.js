@@ -9,7 +9,7 @@ import {
   FaLaptopCode,
   FaMobileAlt,
 } from "react-icons/fa";
-import { SiGoogle, SiLaravel, SiMeta } from "react-icons/si";
+import { SiGoogle, SiMeta } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { AiFillRobot } from "react-icons/ai";
 
