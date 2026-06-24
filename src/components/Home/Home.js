@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import homeLogo from "../../Assets/avatarHome.png";
-import pdfFile from "../../Assets/MohamadMoumnehCV.pdf";
+import pdfFile from "../../Assets/Mohamad_Moumneh_CV.pdf";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";

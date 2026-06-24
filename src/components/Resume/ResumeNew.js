@@ -3,9 +3,9 @@ import { Container, Row } from "react-bootstrap";
 import Particle from "../Particle";
 import cvPreview from "../../Assets/cv-preview.png";
 import { AiOutlineDownload } from "react-icons/ai";
-import pdfFile from "../../Assets/MohamadMoumnehCV.pdf";
+import pdfFile from "../../Assets/Mohamad_Moumneh_CV.pdf";
 
-const pdfFileName = "MohamadMoumnehCV.pdf";
+const pdfFileName = "Mohamad_Moumneh_CV.pdf";
 
 function ResumeNew() {
   useEffect(() => {
