@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Particle from "../Particle";
-import cvPreview from "../../Assets/cv-preview.png";
 import { AiOutlineDownload } from "react-icons/ai";
 import pdfFile from "../../Assets/Mohamad_Moumneh_CV.pdf";
 
@@ -48,10 +47,11 @@ function ResumeNew() {
               </button>
             </div>
             <div className="resume-preview-frame">
-              <img
+              <iframe
+                src={pdfFile}
                 className="resume-preview-image"
-                src={cvPreview}
-                alt="Mohamad Moumneh CV preview"
+                title="Mohamad Moumneh CV"
+                style={{ width: "100%", height: "900px", border: "none" }}
               />
             </div>
           </div>
