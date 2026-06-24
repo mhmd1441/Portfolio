@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Particle from "../Particle";
-import cvPreview from "../../Assets/cv-preview.png";
 import { AiOutlineDownload } from "react-icons/ai";
 import pdfFile from "../../Assets/Mohamad_Moumneh_CV.pdf";
 
@@ -46,13 +45,6 @@ function ResumeNew() {
                 <AiOutlineDownload />
                 &nbsp;Download CV
               </button>
-            </div>
-            <div className="resume-preview-frame">
-              <img
-                className="resume-preview-image"
-                src={cvPreview}
-                alt="Mohamad Moumneh CV preview"
-              />
             </div>
           </div>
         </Row>
