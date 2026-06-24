@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import homeLogo from "../../Assets/avatarHome.png";
-import pdfFile from "../../Assets/Mohamad_Moumneh_CV.pdf";
+import pdfFile from "../../Assets/MohamadMoumnehCV.pdf";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
@@ -43,7 +43,7 @@ function Home() {
                 </Link>
                 <a
                   href={pdfFile}
-                  download="Mohamad_Moumneh_CV.pdf"
+                  download="MohamadMoumnehCV.pdf"
                   className="btn hero-btn-outline"
                 >
                   <AiOutlineDownload /> Download CV
