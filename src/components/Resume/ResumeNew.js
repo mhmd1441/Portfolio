@@ -53,7 +53,6 @@ function ResumeNew() {
                 className="resume-preview-image"
                 src={cvPreview}
                 alt="Mohamad Moumneh CV"
-                style={{ width: "100%", height: "auto", display: "block" }}
               />
             </div>
           </div>
