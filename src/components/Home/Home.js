@@ -32,7 +32,7 @@ function Home() {
                 Open to opportunities
               </div>
               <p className="hero-kicker">Backend Developer · Full-Stack · Mobile</p>
-              <h1 className="heading">Hello, I'm</h1>
+              <p className="heading">Hello, I'm</p>
               <h1 className="heading-name">
                 <strong className="main-name">Mohamad Moumneh</strong>
               </h1>
@@ -51,7 +51,7 @@ function Home() {
                     trackEvent(EVENTS.NAV_CLICK, { to: "/project", location: "home_hero" })
                   }
                 >
-                  <AiOutlineFundProjectionScreen /> View My Work
+                  <AiOutlineFundProjectionScreen aria-hidden="true" /> View My Work
                 </Link>
                 <a
                   href={CV_URL}
@@ -59,7 +59,7 @@ function Home() {
                   onClick={handleDownload}
                   className="btn hero-btn-outline"
                 >
-                  <AiOutlineDownload /> Download CV
+                  <AiOutlineDownload aria-hidden="true" /> Download CV
                 </a>
               </div>
             </Col>

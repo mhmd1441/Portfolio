@@ -135,7 +135,9 @@ function Experience() {
           {experiences.map((exp, i) => (
             <div className="timeline-item reveal" key={i}>
               <div className="timeline-dot">
-                <span className="timeline-icon">{exp.icon}</span>
+                <span className="timeline-icon" aria-hidden="true">
+                  {exp.icon}
+                </span>
               </div>
               <div className="timeline-card">
                 <div className="timeline-header">
@@ -164,14 +166,16 @@ function Experience() {
         <p className="section-eyebrow reveal" style={{ marginTop: "72px" }}>
           Learning
         </p>
-        <h1 className="project-heading reveal">
+        <h2 className="project-heading reveal">
           Certifications &amp; <strong className="purple">Courses</strong>
-        </h1>
+        </h2>
 
         <div className="cert-grid">
           {certifications.map((cert, i) => (
             <div className="cert-card reveal" key={i}>
-              <div className="cert-icon">{cert.icon}</div>
+              <div className="cert-icon" aria-hidden="true">
+                {cert.icon}
+              </div>
               <div className="cert-body">
                 <p className="cert-name">{cert.name}</p>
                 <p className="cert-issuer">{cert.issuer}</p>
@@ -195,7 +199,7 @@ function Experience() {
                     })
                   }
                 >
-                  <FaExternalLinkAlt /> Verify
+                  <FaExternalLinkAlt aria-hidden="true" /> Verify
                 </a>
               )}
             </div>

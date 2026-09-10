@@ -20,6 +20,13 @@ const UTM_KEYS = [
 export function initAnalytics() {
   if (!ANALYTICS_ENABLED || typeof window === "undefined") return;
 
+  // Honour the Global Privacy Control signal: visitors who set it in their
+  // browser have asked not to be tracked, so GA is never loaded for them.
+  if (navigator.globalPrivacyControl === true) {
+    stripUtmParams();
+    return;
+  }
+
   const landingUrl = window.location.href;
 
   window.dataLayer = window.dataLayer || [];

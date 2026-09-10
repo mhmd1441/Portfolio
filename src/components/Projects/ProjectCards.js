@@ -40,7 +40,7 @@ function ProjectCards(props) {
               })
             }
           >
-            <BsGithub /> &nbsp;GitHub
+            <BsGithub aria-hidden="true" /> &nbsp;GitHub
           </Button>
 
           {props.demoLink && (
@@ -57,7 +57,7 @@ function ProjectCards(props) {
                 })
               }
             >
-              <CgWebsite /> &nbsp;Demo
+              <CgWebsite aria-hidden="true" /> &nbsp;Demo
             </Button>
           )}
         </div>

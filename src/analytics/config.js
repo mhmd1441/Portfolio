@@ -16,6 +16,7 @@ export const ANALYTICS_ENABLED = process.env.NODE_ENV === "production";
 export const EVENTS = {
   CV_DOWNLOAD: "cv_download",
   CV_DOWNLOAD_FAILED: "cv_download_failed",
+  CV_OPEN: "cv_open",
   GITHUB_CLICK: "github_click",
   LINKEDIN_CLICK: "linkedin_click",
   EMAIL_CLICK: "email_click",

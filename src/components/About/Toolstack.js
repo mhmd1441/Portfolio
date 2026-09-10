@@ -1,3 +1,4 @@
+import React from "react";
 import { Col, Row } from "react-bootstrap";
 import {
   SiDocker,
@@ -28,7 +29,7 @@ function Toolstack() {
     <Row className="skill-grid">
       {tools.map((tool) => (
         <Col xs={6} sm={4} md={3} lg={2} className="tech-icons reveal" key={tool.label}>
-          {tool.icon}
+          {React.cloneElement(tool.icon, { "aria-hidden": "true" })}
           <span>{tool.label}</span>
         </Col>
       ))}

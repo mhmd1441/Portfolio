@@ -41,20 +41,20 @@ function About() {
             </picture>
           </Col>
         </Row>
-        <h1 className="project-heading reveal">
+        <h2 className="project-heading reveal">
           <strong className="purple">Languages</strong> I Speak
-        </h1>
+        </h2>
         <Languages />
 
-        <h1 className="project-heading reveal">
+        <h2 className="project-heading reveal">
           Professional <strong className="purple">Skillset</strong>
-        </h1>
+        </h2>
 
         <Techstack />
 
-        <h1 className="project-heading reveal">
+        <h2 className="project-heading reveal">
           <strong className="purple">Tools</strong> I use
-        </h1>
+        </h2>
         <Toolstack />
 
         <Github />

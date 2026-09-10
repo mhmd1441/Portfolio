@@ -16,10 +16,10 @@ function Home2() {
         <Row className="intro-row">
           <Col md={8} className="home-about-description">
             <p className="section-eyebrow">Introduction</p>
-            <h1 className="section-title">
+            <h2 className="section-title">
               Building <span className="purple">useful software</span> with
               purpose
-            </h1>
+            </h2>
             <p className="home-about-body">
               Computer Science graduate from Antonine University, Beirut,
               focused on backend and full-stack development. I turn ideas into
@@ -33,7 +33,7 @@ function Home2() {
                 trackEvent(EVENTS.NAV_CLICK, { to: "/about", location: "home_intro" })
               }
             >
-              More about me <HiArrowRight />
+              More about me <HiArrowRight aria-hidden="true" />
             </Link>
           </Col>
           <Col md={4} className="myAvatar">
@@ -55,9 +55,9 @@ function Home2() {
         <Row>
           <Col md={12} className="contact-section">
             <p className="section-eyebrow">Get in touch</p>
-            <h1 className="section-title">
+            <h2 className="section-title">
               Let&apos;s build something <span className="purple">together</span>
-            </h1>
+            </h2>
             <p className="contact-copy">
               Whether it's a job opportunity, a collaboration, or just a
               technical conversation — my inbox is open. I typically respond
@@ -69,7 +69,7 @@ function Home2() {
                 className="contact-link contact-link--primary"
                 onClick={() => trackEvent(EVENTS.EMAIL_CLICK, { location: LOCATION })}
               >
-                <HiOutlineMail />
+                <HiOutlineMail aria-hidden="true" />
                 <span>mmoumneh14@gmail.com</span>
               </a>
               <a
@@ -79,7 +79,7 @@ function Home2() {
                 className="contact-link"
                 onClick={() => trackEvent(EVENTS.LINKEDIN_CLICK, { location: LOCATION })}
               >
-                <FaLinkedinIn />
+                <FaLinkedinIn aria-hidden="true" />
                 <span>LinkedIn</span>
               </a>
               <a
@@ -89,7 +89,7 @@ function Home2() {
                 className="contact-link"
                 onClick={() => trackEvent(EVENTS.GITHUB_CLICK, { location: LOCATION })}
               >
-                <FaGithub />
+                <FaGithub aria-hidden="true" />
                 <span>GitHub</span>
               </a>
             </div>

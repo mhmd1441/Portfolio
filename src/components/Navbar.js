@@ -15,16 +15,14 @@ import { EVENTS, trackEvent } from "../analytics";
 
 const iconClassName = "nav-icon";
 
+const iconProps = { className: iconClassName, "aria-hidden": "true" };
+
 const links = [
-  { to: "/", label: "Home", icon: <AiOutlineHome className={iconClassName} /> },
-  { to: "/about", label: "About", icon: <AiOutlineUser className={iconClassName} /> },
-  { to: "/experience", label: "Experience", icon: <BsBriefcase className={iconClassName} /> },
-  {
-    to: "/project",
-    label: "Projects",
-    icon: <AiOutlineFundProjectionScreen className={iconClassName} />,
-  },
-  { to: "/resume", label: "Resume", icon: <CgFileDocument className={iconClassName} /> },
+  { to: "/", label: "Home", icon: <AiOutlineHome {...iconProps} /> },
+  { to: "/about", label: "About", icon: <AiOutlineUser {...iconProps} /> },
+  { to: "/experience", label: "Experience", icon: <BsBriefcase {...iconProps} /> },
+  { to: "/project", label: "Projects", icon: <AiOutlineFundProjectionScreen {...iconProps} /> },
+  { to: "/resume", label: "Resume", icon: <CgFileDocument {...iconProps} /> },
 ];
 
 function NavBar() {

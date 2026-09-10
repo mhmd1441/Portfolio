@@ -1,10 +1,21 @@
 import React, { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
+import { AiOutlineDownload } from "react-icons/ai";
+import { HiOutlineExternalLink } from "react-icons/hi";
 import cvPreviewWebp from "../../Assets/cv-preview.webp";
 import cvPreviewJpg from "../../Assets/cv-preview.jpg";
-import { AiOutlineDownload } from "react-icons/ai";
-import { downloadCv } from "../../utils/downloadCv";
+import { CV_URL, downloadCv } from "../../utils/downloadCv";
+import { EVENTS, trackEvent } from "../../analytics";
 
+const LOCATION = "resume_page";
+
+/**
+ * The CV is shown as a designed preview image on every device, so the page
+ * looks identical everywhere. Browser PDF viewers were tried and rejected:
+ * each browser wraps the document in its own toolbar and grey frame, which
+ * cannot be styled from the page. The full PDF is one click away via the
+ * preview itself, "Open in new tab", or "Download CV".
+ */
 function ResumeNew() {
   useEffect(() => {
     document.title = "Resume | Mohamad Moumneh";
@@ -24,27 +35,57 @@ function ResumeNew() {
                   development experience.
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={() => downloadCv("resume_page")}
-                className="resume-download-btn btn btn-primary"
-              >
-                <AiOutlineDownload />
-                &nbsp;Download CV
-              </button>
+              <div className="resume-actions">
+                <button
+                  type="button"
+                  onClick={() => downloadCv(LOCATION)}
+                  className="resume-download-btn btn btn-primary"
+                >
+                  <AiOutlineDownload aria-hidden="true" />
+                  &nbsp;Download CV
+                </button>
+                <a
+                  href={CV_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn hero-btn-outline resume-open-btn"
+                  onClick={() => trackEvent(EVENTS.CV_OPEN, { location: LOCATION })}
+                >
+                  <HiOutlineExternalLink aria-hidden="true" />
+                  &nbsp;Open in new tab
+                </a>
+              </div>
             </div>
+
             <div className="resume-preview-frame">
-              <picture>
-                <source srcSet={cvPreviewWebp} type="image/webp" />
-                <img
-                  className="resume-preview-image"
-                  src={cvPreviewJpg}
-                  width={1400}
-                  height={1812}
-                  decoding="async"
-                  alt="Preview of Mohamad Moumneh's CV"
-                />
-              </picture>
+              <figure className="resume-preview-figure">
+                <a
+                  href={CV_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="resume-preview-link"
+                  aria-label="View the full CV as a PDF"
+                  onClick={() => trackEvent(EVENTS.CV_OPEN, { location: "resume_preview" })}
+                >
+                  <picture>
+                    <source srcSet={cvPreviewWebp} type="image/webp" />
+                    <img
+                      className="resume-preview-image"
+                      src={cvPreviewJpg}
+                      width={1400}
+                      height={1812}
+                      decoding="async"
+                      alt="Preview of Mohamad Moumneh's CV"
+                    />
+                  </picture>
+                  <span className="resume-preview-hint" aria-hidden="true">
+                    <HiOutlineExternalLink /> View full PDF
+                  </span>
+                </a>
+                <figcaption className="resume-preview-note">
+                  Click the preview or use the buttons above for the full PDF.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </Row>

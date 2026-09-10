@@ -1,3 +1,4 @@
+import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { CgCPlusPlus } from "react-icons/cg";
 import {
@@ -34,7 +35,7 @@ function Techstack() {
     <Row className="skill-grid">
       {skills.map((skill) => (
         <Col xs={6} sm={4} md={3} lg={2} className="tech-icons reveal" key={skill.label}>
-          {skill.icon}
+          {React.cloneElement(skill.icon, { "aria-hidden": "true" })}
           <span>{skill.label}</span>
         </Col>
       ))}

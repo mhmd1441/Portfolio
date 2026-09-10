@@ -15,6 +15,19 @@ test("renders the portfolio landing page", () => {
   expect(nav.getByRole("link", { name: /resume/i })).toBeInTheDocument();
 });
 
+test("renders the resume page with download and open actions", async () => {
+  window.history.pushState({}, "", "/resume");
+  render(<App />);
+
+  expect(
+    await screen.findByRole("button", { name: /download cv/i })
+  ).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: /open in new tab/i })).toHaveAttribute(
+    "target",
+    "_blank"
+  );
+});
+
 test("shows the 404 page for unknown routes", async () => {
   window.history.pushState({}, "", "/this-page-does-not-exist");
   render(<App />);

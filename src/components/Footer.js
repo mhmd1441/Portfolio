@@ -35,7 +35,7 @@ function Footer() {
               className="footer-email"
               onClick={() => trackEvent(EVENTS.EMAIL_CLICK, { location: LOCATION })}
             >
-              <HiOutlineMail /> mmoumneh14@gmail.com
+              <HiOutlineMail aria-hidden="true" /> mmoumneh14@gmail.com
             </a>
           </Col>
 
@@ -69,7 +69,7 @@ function Footer() {
                 aria-label="GitHub"
                 onClick={() => trackEvent(EVENTS.GITHUB_CLICK, { location: LOCATION })}
               >
-                <AiFillGithub /> GitHub
+                <AiFillGithub aria-hidden="true" /> GitHub
               </a>
               <a
                 href="https://www.linkedin.com/in/mhmdmoumneh"
@@ -78,14 +78,14 @@ function Footer() {
                 aria-label="LinkedIn"
                 onClick={() => trackEvent(EVENTS.LINKEDIN_CLICK, { location: LOCATION })}
               >
-                <FaLinkedinIn /> LinkedIn
+                <FaLinkedinIn aria-hidden="true" /> LinkedIn
               </a>
               <a
                 href="mailto:mmoumneh14@gmail.com"
                 aria-label="Email"
                 onClick={() => trackEvent(EVENTS.EMAIL_CLICK, { location: LOCATION })}
               >
-                <HiOutlineMail /> Email
+                <HiOutlineMail aria-hidden="true" /> Email
               </a>
             </div>
           </Col>

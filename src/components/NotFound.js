@@ -20,10 +20,10 @@ function NotFound() {
         </p>
         <div className="hero-cta not-found-actions">
           <Link to="/" className="btn btn-primary hero-btn-primary">
-            <AiOutlineHome /> Back to Home
+            <AiOutlineHome aria-hidden="true" /> Back to Home
           </Link>
           <Link to="/project" className="btn hero-btn-outline">
-            <AiOutlineFundProjectionScreen /> View Projects
+            <AiOutlineFundProjectionScreen aria-hidden="true" /> View Projects
           </Link>
         </div>
       </div>
