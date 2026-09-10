@@ -4,6 +4,17 @@ import { Link } from "react-router-dom";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
+import { EVENTS, trackEvent } from "../analytics";
+
+const LOCATION = "footer";
+
+const navLinks = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/experience", label: "Experience" },
+  { to: "/project", label: "Projects" },
+  { to: "/resume", label: "Resume" },
+];
 
 function Footer() {
   const year = new Date().getFullYear();
@@ -19,7 +30,11 @@ function Footer() {
               Backend &amp; Full-Stack Developer
             </p>
             <p className="footer-location">📍 Beirut, Lebanon</p>
-            <a href="mailto:mmoumneh14@gmail.com" className="footer-email">
+            <a
+              href="mailto:mmoumneh14@gmail.com"
+              className="footer-email"
+              onClick={() => trackEvent(EVENTS.EMAIL_CLICK, { location: LOCATION })}
+            >
               <HiOutlineMail /> mmoumneh14@gmail.com
             </a>
           </Col>
@@ -28,11 +43,18 @@ function Footer() {
           <Col md={4} className="footer-nav">
             <h5 className="footer-nav-heading">Navigation</h5>
             <ul className="footer-nav-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/experience">Experience</Link></li>
-              <li><Link to="/project">Projects</Link></li>
-              <li><Link to="/resume">Resume</Link></li>
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    onClick={() =>
+                      trackEvent(EVENTS.NAV_CLICK, { to: link.to, location: LOCATION })
+                    }
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </Col>
 
@@ -45,6 +67,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
+                onClick={() => trackEvent(EVENTS.GITHUB_CLICK, { location: LOCATION })}
               >
                 <AiFillGithub /> GitHub
               </a>
@@ -53,10 +76,15 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
+                onClick={() => trackEvent(EVENTS.LINKEDIN_CLICK, { location: LOCATION })}
               >
                 <FaLinkedinIn /> LinkedIn
               </a>
-              <a href="mailto:mmoumneh14@gmail.com" aria-label="Email">
+              <a
+                href="mailto:mmoumneh14@gmail.com"
+                aria-label="Email"
+                onClick={() => trackEvent(EVENTS.EMAIL_CLICK, { location: LOCATION })}
+              >
                 <HiOutlineMail /> Email
               </a>
             </div>

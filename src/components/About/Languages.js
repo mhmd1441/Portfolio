@@ -17,7 +17,7 @@ const languages = [
     lang: "French",
     level: "Proficient",
     proficiency: 80,
-    description: "Studied from age 4 through high school",
+description: "TCF B2 Certification (Campus France Liban)",
   },
 ];
 

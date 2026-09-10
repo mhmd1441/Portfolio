@@ -1,17 +1,27 @@
 import React, { useCallback } from "react";
 import Particles from "react-tsparticles";
 
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" &&
+  typeof window.matchMedia === "function" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 function Particle() {
   const particlesInit = useCallback(async () => {}, []);
+
+  // Skip the animation entirely for visitors who asked their OS to reduce motion.
+  if (prefersReducedMotion()) return null;
 
   return (
     <Particles
       id="tsparticles"
       init={particlesInit}
       options={{
+        fpsLimit: 60,
+        detectRetina: false,
         particles: {
           number: {
-            value: 160,
+            value: 60,
             density: {
               enable: true,
               area: 1500,
@@ -19,7 +29,6 @@ function Particle() {
           },
           links: {
             enable: false,
-            opacity: 0.03,
           },
           move: {
             enable: true,
@@ -50,7 +59,6 @@ function Particle() {
             },
           },
         },
-        detectRetina: true,
       }}
     />
   );

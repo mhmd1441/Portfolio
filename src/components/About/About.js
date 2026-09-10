@@ -5,7 +5,8 @@ import Github from "./Github";
 import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
 import Languages from "./Languages";
-import laptopImg from "../../Assets/about.png";
+import aboutWebp from "../../Assets/about.webp";
+import aboutJpg from "../../Assets/about.jpg";
 import Toolstack from "./Toolstack";
 
 function About() {
@@ -26,7 +27,18 @@ function About() {
             <Aboutcard />
           </Col>
           <Col md={5} className="about-img reveal">
-            <img src={laptopImg} alt="about" className="img-fluid" />
+            <picture>
+              <source srcSet={aboutWebp} type="image/webp" />
+              <img
+                src={aboutJpg}
+                width={800}
+                height={800}
+                loading="lazy"
+                decoding="async"
+                alt="Illustration of a developer workspace with a laptop and code"
+                className="img-fluid"
+              />
+            </picture>
           </Col>
         </Row>
         <h1 className="project-heading reveal">

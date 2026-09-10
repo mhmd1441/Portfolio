@@ -10,6 +10,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -24,6 +25,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintcache
-
-Server/node_modules
-Server/config.js

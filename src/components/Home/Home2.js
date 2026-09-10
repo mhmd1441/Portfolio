@@ -1,43 +1,52 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import myImg from "../../Assets/avatar.svg";
 import Tilt from "react-parallax-tilt";
-import { HiOutlineMail } from "react-icons/hi";
+import { HiOutlineMail, HiArrowRight } from "react-icons/hi";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { EVENTS, trackEvent } from "../../analytics";
+
+const LOCATION = "home_contact";
 
 function Home2() {
   return (
-    <Container fluid className="home-about-section" id="about">
+    <Container fluid className="home-about-section">
       <Container>
         <Row className="intro-row">
           <Col md={8} className="home-about-description">
-            <p className="section-eyebrow">About me</p>
+            <p className="section-eyebrow">Introduction</p>
             <h1 className="section-title">
               Building <span className="purple">useful software</span> with
               purpose
             </h1>
             <p className="home-about-body">
-              I am a Bachelor of Technology in Computer Science graduate from
-              Antonine University, Beirut — focused on backend development,
-              full-stack products, and mobile-first systems. I turn ideas into
-              structured, reliable applications that real people can depend on.
-              <br />
-              <br />I work with{" "}
-              <b className="purple">
-                Laravel, PHP, React, React Native, ASP.NET Core, Java, C++,
-                PostgreSQL, and MySQL
-              </b>
-              .
-              <br />
-              <br />
-              My strongest interest is building practical platforms with clear
-              architecture, secure authentication, clean APIs, and polished user
-              experiences.
+              Computer Science graduate from Antonine University, Beirut,
+              focused on backend and full-stack development. I turn ideas into
+              structured, reliable web and mobile applications that real people
+              can depend on.
             </p>
+            <Link
+              to="/about"
+              className="home-about-link"
+              onClick={() =>
+                trackEvent(EVENTS.NAV_CLICK, { to: "/about", location: "home_intro" })
+              }
+            >
+              More about me <HiArrowRight />
+            </Link>
           </Col>
           <Col md={4} className="myAvatar">
             <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
+              <img
+                src={myImg}
+                width={400}
+                height={400}
+                loading="lazy"
+                decoding="async"
+                className="img-fluid"
+                alt="Illustration of Mohamad Moumneh"
+              />
             </Tilt>
           </Col>
         </Row>
@@ -55,7 +64,11 @@ function Home2() {
               within 24 hours.
             </p>
             <div className="contact-actions">
-              <a href="mailto:mmoumneh14@gmail.com" className="contact-link contact-link--primary">
+              <a
+                href="mailto:mmoumneh14@gmail.com"
+                className="contact-link contact-link--primary"
+                onClick={() => trackEvent(EVENTS.EMAIL_CLICK, { location: LOCATION })}
+              >
                 <HiOutlineMail />
                 <span>mmoumneh14@gmail.com</span>
               </a>
@@ -64,6 +77,7 @@ function Home2() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-link"
+                onClick={() => trackEvent(EVENTS.LINKEDIN_CLICK, { location: LOCATION })}
               >
                 <FaLinkedinIn />
                 <span>LinkedIn</span>
@@ -73,6 +87,7 @@ function Home2() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-link"
+                onClick={() => trackEvent(EVENTS.GITHUB_CLICK, { location: LOCATION })}
               >
                 <FaGithub />
                 <span>GitHub</span>

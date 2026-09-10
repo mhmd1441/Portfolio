@@ -16,12 +16,16 @@ function Github() {
       <Col xs={12} className="github-stats-row reveal">
         <img
           src={statsUrl}
-          alt="Mohamad's GitHub stats"
+          loading="lazy"
+          decoding="async"
+          alt="Mohamad Moumneh's GitHub statistics: stars, commits, and pull requests"
           className="github-stat-img"
         />
         <img
           src={langsUrl}
-          alt="Top languages"
+          loading="lazy"
+          decoding="async"
+          alt="Mohamad Moumneh's most used programming languages on GitHub"
           className="github-stat-img"
         />
       </Col>

@@ -1,34 +1,18 @@
 import React, { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
-import Particle from "../Particle";
-import cvPreview from "../../Assets/MohamadMoumnehCV.jpg";
+import cvPreviewWebp from "../../Assets/cv-preview.webp";
+import cvPreviewJpg from "../../Assets/cv-preview.jpg";
 import { AiOutlineDownload } from "react-icons/ai";
-import pdfFile from "../../Assets/Mohamad_Moumneh_CV.pdf";
-
-const pdfFileName = "Mohamad_Moumneh_CV.pdf";
+import { downloadCv } from "../../utils/downloadCv";
 
 function ResumeNew() {
   useEffect(() => {
     document.title = "Resume | Mohamad Moumneh";
   }, []);
 
-  const handleDownload = async () => {
-    const response = await fetch(pdfFile);
-    const blob = await response.blob();
-    const blobUrl = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = blobUrl;
-    link.download = pdfFileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(blobUrl);
-  };
-
   return (
     <div>
       <Container fluid className="resume-section">
-        <Particle />
         <Row className="resume">
           <div className="resume-preview-shell">
             <div className="resume-preview-header">
@@ -41,7 +25,8 @@ function ResumeNew() {
                 </p>
               </div>
               <button
-                onClick={handleDownload}
+                type="button"
+                onClick={() => downloadCv("resume_page")}
                 className="resume-download-btn btn btn-primary"
               >
                 <AiOutlineDownload />
@@ -49,11 +34,17 @@ function ResumeNew() {
               </button>
             </div>
             <div className="resume-preview-frame">
-              <img
-                className="resume-preview-image"
-                src={cvPreview}
-                alt="Mohamad Moumneh CV"
-              />
+              <picture>
+                <source srcSet={cvPreviewWebp} type="image/webp" />
+                <img
+                  className="resume-preview-image"
+                  src={cvPreviewJpg}
+                  width={1400}
+                  height={1812}
+                  decoding="async"
+                  alt="Preview of Mohamad Moumneh's CV"
+                />
+              </picture>
             </div>
           </div>
         </Row>

@@ -11,8 +11,21 @@ import {
 } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
 import { BsBriefcase } from "react-icons/bs";
+import { EVENTS, trackEvent } from "../analytics";
 
 const iconClassName = "nav-icon";
+
+const links = [
+  { to: "/", label: "Home", icon: <AiOutlineHome className={iconClassName} /> },
+  { to: "/about", label: "About", icon: <AiOutlineUser className={iconClassName} /> },
+  { to: "/experience", label: "Experience", icon: <BsBriefcase className={iconClassName} /> },
+  {
+    to: "/project",
+    label: "Projects",
+    icon: <AiOutlineFundProjectionScreen className={iconClassName} />,
+  },
+  { to: "/resume", label: "Resume", icon: <CgFileDocument className={iconClassName} /> },
+];
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
@@ -49,8 +62,12 @@ function NavBar() {
     };
   }, [expand]);
 
-  const isActive = (path) =>
-    path === "/" ? location.pathname === "/" : location.pathname === path;
+  const isActive = (path) => location.pathname === path;
+
+  const handleNavClick = (to) => {
+    updateExpanded(false);
+    trackEvent(EVENTS.NAV_CLICK, { to, location: "navbar" });
+  };
 
   return (
     <Navbar
@@ -62,7 +79,13 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex">
-          <img src={logo} className="img-fluid logo" alt="brand" />
+          <img
+            src={logo}
+            width={500}
+            height={500}
+            className="img-fluid logo"
+            alt="Mohamad Moumneh — home"
+          />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
@@ -74,61 +97,18 @@ function NavBar() {
         </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/"
-                className={isActive("/") ? "nav-link-active" : ""}
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineHome className={iconClassName} /> Home
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/about"
-                className={isActive("/about") ? "nav-link-active" : ""}
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineUser className={iconClassName} /> About
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/experience"
-                className={isActive("/experience") ? "nav-link-active" : ""}
-                onClick={() => updateExpanded(false)}
-              >
-                <BsBriefcase className={iconClassName} /> Experience
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/project"
-                className={isActive("/project") ? "nav-link-active" : ""}
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineFundProjectionScreen className={iconClassName} />{" "}
-                Projects
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/resume"
-                className={isActive("/resume") ? "nav-link-active" : ""}
-                onClick={() => updateExpanded(false)}
-              >
-                <CgFileDocument className={iconClassName} /> Resume
-              </Nav.Link>
-            </Nav.Item>
+            {links.map((link) => (
+              <Nav.Item key={link.to}>
+                <Nav.Link
+                  as={Link}
+                  to={link.to}
+                  className={isActive(link.to) ? "nav-link-active" : ""}
+                  onClick={() => handleNavClick(link.to)}
+                >
+                  {link.icon} {link.label}
+                </Nav.Link>
+              </Nav.Item>
+            ))}
           </Nav>
         </Navbar.Collapse>
       </Container>

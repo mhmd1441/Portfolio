@@ -10,3 +10,11 @@ global.TextDecoder = TextDecoder;
 global.TextEncoder = TextEncoder;
 
 window.scrollTo = jest.fn();
+
+// jsdom does not implement IntersectionObserver (used by the scroll-reveal hook).
+class IntersectionObserverStub {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+window.IntersectionObserver = IntersectionObserverStub;

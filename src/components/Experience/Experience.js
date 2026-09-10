@@ -12,6 +12,7 @@ import {
 import { SiGoogle, SiMeta } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { AiFillRobot } from "react-icons/ai";
+import { EVENTS, trackEvent } from "../../analytics";
 
 const experiences = [
   {
@@ -186,6 +187,13 @@ function Experience() {
                   rel="noopener noreferrer"
                   className="cert-verify"
                   aria-label={`Verify ${cert.name}`}
+                  onClick={() =>
+                    trackEvent(EVENTS.OUTBOUND_CLICK, {
+                      location: "certifications",
+                      label: cert.name,
+                      url: cert.link,
+                    })
+                  }
                 >
                   <FaExternalLinkAlt /> Verify
                 </a>

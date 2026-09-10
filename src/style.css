@@ -36,31 +36,6 @@ button:focus {
 }
 
 /* --------- */
-/*  Preloader */
-/* --------- */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 999999;
-  background-color: #07111f;
-  background-image: url(./Assets/pre.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#preloader-none {
-  opacity: 0;
-}
-
-#no-scroll {
-  overflow: hidden;
-  height: 100vh;
-}
-
-/* --------- */
 /* Scrollbar  */
 /* --------- */
 ::-webkit-scrollbar {
@@ -409,6 +384,28 @@ button:focus {
   font-size: 1.08em !important;
   line-height: 1.85;
   text-align: left;
+}
+
+.home-about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.home-about-link:hover {
+  gap: 12px;
+  color: #93c5fd;
+}
+
+@media (max-width: 767px) {
+  .home-about-link {
+    justify-content: center;
+  }
 }
 
 /* --------- */
@@ -1061,7 +1058,8 @@ button:focus {
   text-decoration: none;
 }
 
-.hero-btn-outline {
+/* `.btn.` prefix beats Bootstrap's own `.btn` colour rules, which load after this file. */
+.btn.hero-btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1076,7 +1074,7 @@ button:focus {
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
-.hero-btn-outline:hover {
+.btn.hero-btn-outline:hover {
   border-color: var(--accent);
   background: rgba(59, 130, 246, 0.1);
   color: var(--text);
@@ -1440,6 +1438,65 @@ button:focus {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px;
+  }
+}
+
+/* ------------------- */
+/* 404 page             */
+/* ------------------- */
+.not-found-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 20px 80px;
+  background-image: var(--section-background-color);
+}
+
+.not-found-card {
+  max-width: 560px;
+  padding: 44px 36px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.not-found-code {
+  margin: 0;
+  font-size: clamp(4rem, 14vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.not-found-title {
+  margin: 14px 0 12px;
+  color: var(--text);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 800;
+}
+
+.not-found-copy {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.not-found-actions {
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .not-found-section {
+    padding: 110px 14px 60px;
+  }
+  .not-found-card {
+    padding: 32px 20px;
   }
 }
 

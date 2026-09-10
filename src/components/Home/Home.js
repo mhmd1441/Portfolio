@@ -1,18 +1,24 @@
 import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import homeLogo from "../../Assets/avatarHome.png";
-import pdfFile from "../../Assets/Mohamad_Moumneh_CV.pdf";
+import heroWebp from "../../Assets/avatarHome.webp";
+import heroJpg from "../../Assets/avatarHome.jpg";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
-import { AiOutlineDownload } from "react-icons/ai";
-import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+import { AiOutlineDownload, AiOutlineFundProjectionScreen } from "react-icons/ai";
+import { CV_FILE_NAME, CV_URL, downloadCv } from "../../utils/downloadCv";
+import { EVENTS, trackEvent } from "../../analytics";
 
 function Home() {
   useEffect(() => {
     document.title = "Mohamad Moumneh | Portfolio";
   }, []);
+
+  const handleDownload = (event) => {
+    event.preventDefault();
+    downloadCv("home_hero");
+  };
 
   return (
     <section>
@@ -38,12 +44,19 @@ function Home() {
                 React, React Native, PostgreSQL, and ASP.NET Core.
               </p>
               <div className="hero-cta">
-                <Link to="/project" className="btn btn-primary hero-btn-primary">
+                <Link
+                  to="/project"
+                  className="btn btn-primary hero-btn-primary"
+                  onClick={() =>
+                    trackEvent(EVENTS.NAV_CLICK, { to: "/project", location: "home_hero" })
+                  }
+                >
                   <AiOutlineFundProjectionScreen /> View My Work
                 </Link>
                 <a
-                  href={pdfFile}
-                  download="MohamadMoumnehCV.pdf"
+                  href={CV_URL}
+                  download={CV_FILE_NAME}
+                  onClick={handleDownload}
                   className="btn hero-btn-outline"
                 >
                   <AiOutlineDownload /> Download CV
@@ -52,7 +65,18 @@ function Home() {
             </Col>
 
             <Col md={5} className="home-visual">
-              <img src={homeLogo} alt="home pic" className="img-fluid hero-image" />
+              <picture>
+                <source srcSet={heroWebp} type="image/webp" />
+                <img
+                  src={heroJpg}
+                  width={900}
+                  height={600}
+                  fetchPriority="high"
+                  decoding="async"
+                  alt="Illustration of Mohamad Moumneh coding on a laptop"
+                  className="img-fluid hero-image"
+                />
+              </picture>
             </Col>
           </Row>
         </Container>
