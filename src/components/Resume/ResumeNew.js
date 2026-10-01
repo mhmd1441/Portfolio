@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import { AiOutlineDownload } from "react-icons/ai";
 import { HiOutlineExternalLink } from "react-icons/hi";
-import cvPreviewWebp from "../../Assets/cv-preview.webp";
-import cvPreviewJpg from "../../Assets/cv-preview.jpg";
+import cvPreview from "../../Assets/cv-preview.png";
 import { CV_URL, downloadCv } from "../../utils/downloadCv";
 import { EVENTS, trackEvent } from "../../analytics";
 
@@ -67,17 +66,14 @@ function ResumeNew() {
                   aria-label="View the full CV as a PDF"
                   onClick={() => trackEvent(EVENTS.CV_OPEN, { location: "resume_preview" })}
                 >
-                  <picture>
-                    <source srcSet={cvPreviewWebp} type="image/webp" />
-                    <img
-                      className="resume-preview-image"
-                      src={cvPreviewJpg}
-                      width={1400}
-                      height={1812}
-                      decoding="async"
-                      alt="Preview of Mohamad Moumneh's CV"
-                    />
-                  </picture>
+                  <img
+                    className="resume-preview-image"
+                    src={cvPreview}
+                    width={1654}
+                    height={2339}
+                    decoding="async"
+                    alt="Preview of Mohamad Moumneh's CV"
+                  />
                   <span className="resume-preview-hint" aria-hidden="true">
                     <HiOutlineExternalLink /> View full PDF
                   </span>
