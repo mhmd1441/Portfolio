@@ -10,6 +10,9 @@ const UTM_KEYS = [
   "utm_content",
 ];
 
+let initialPageLocation = null;
+let initialPageViewPending = false;
+
 /**
  * Loads the GA4 tag and records the first page view.
  *
@@ -28,13 +31,18 @@ export function initAnalytics() {
   }
 
   const landingUrl = window.location.href;
+  initialPageLocation = landingUrl;
+  initialPageViewPending = true;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag() {
     window.dataLayer.push(arguments);
   };
   window.gtag("js", new Date());
-  window.gtag("config", GA_MEASUREMENT_ID, { page_location: landingUrl });
+  window.gtag("config", GA_MEASUREMENT_ID, {
+    page_location: landingUrl,
+    send_page_view: false,
+  });
 
   const script = document.createElement("script");
   script.async = true;
@@ -67,4 +75,16 @@ function stripUtmParams() {
 export function trackEvent(name, params = {}) {
   if (!ANALYTICS_ENABLED || typeof window.gtag !== "function") return;
   window.gtag("event", name, params);
+}
+
+/** Records a page view whenever the single-page app route changes. */
+export function trackPageView({ pagePath, pageTitle }) {
+  const pageLocation = initialPageViewPending ? initialPageLocation : window.location.href;
+  initialPageViewPending = false;
+
+  trackEvent(EVENTS.PAGE_VIEW, {
+    page_location: pageLocation,
+    page_path: pagePath,
+    page_title: pageTitle,
+  });
 }

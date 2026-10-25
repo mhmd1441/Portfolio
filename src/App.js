@@ -1,10 +1,11 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import { useReveal } from "./hooks/useReveal";
+import { trackPageView } from "./analytics";
 import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,6 +21,27 @@ function AppInner() {
   return null;
 }
 
+const pageTitles = {
+  "/": "Mohamad Moumneh | Portfolio",
+  "/about": "About | Mohamad Moumneh",
+  "/experience": "Experience | Mohamad Moumneh",
+  "/project": "Projects | Mohamad Moumneh",
+  "/resume": "Resume | Mohamad Moumneh",
+};
+
+function AnalyticsPageTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView({
+      pagePath: `${location.pathname}${location.search}`,
+      pageTitle: pageTitles[location.pathname] || "Page not found | Mohamad Moumneh",
+    });
+  }, [location.pathname, location.search]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
@@ -27,6 +49,7 @@ function App() {
         <Navbar />
         <ScrollToTop />
         <AppInner />
+        <AnalyticsPageTracker />
         <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
           <Routes>
             <Route path="/" element={<Home />} />

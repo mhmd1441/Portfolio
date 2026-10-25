@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import heroWebp from "../../Assets/avatarHome.webp";
@@ -9,8 +9,13 @@ import Type from "./Type";
 import { AiOutlineDownload, AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { CV_FILE_NAME, CV_URL, downloadCv } from "../../utils/downloadCv";
 import { EVENTS, trackEvent } from "../../analytics";
+import { useAnalyticsView } from "../../hooks/useAnalyticsView";
 
 function Home() {
+  const heroRef = useRef(null);
+
+  useAnalyticsView(EVENTS.SECTION_VIEW, heroRef, { section_name: "home_hero" });
+
   useEffect(() => {
     document.title = "Mohamad Moumneh | Portfolio";
   }, []);
@@ -22,16 +27,16 @@ function Home() {
 
   return (
     <section>
-      <Container fluid className="home-section" id="home">
+      <Container ref={heroRef} fluid className="home-section" id="home">
         <Particle />
         <Container className="home-content">
           <Row className="home-row">
             <Col md={7} className="home-header">
               <div className="available-badge">
                 <span className="available-dot" />
-                Open to opportunities
+                Open to full-time opportunities
               </div>
-              <p className="hero-kicker">Backend Developer · Full-Stack · Mobile</p>
+              <p className="hero-kicker">Software Engineer · Web · Mobile · Intelligent Systems</p>
               <p className="heading">Hello, I'm</p>
               <h1 className="heading-name">
                 <strong className="main-name">Mohamad Moumneh</strong>
@@ -40,8 +45,8 @@ function Home() {
                 <Type />
               </div>
               <p className="hero-summary">
-                I build practical, scalable web and mobile systems with Laravel,
-                React, React Native, PostgreSQL, and ASP.NET Core.
+                Beirut, Lebanon. I build practical web, mobile, CMS, ERP, and
+                intelligent software systems that solve real business problems.
               </p>
               <div className="hero-cta">
                 <Link

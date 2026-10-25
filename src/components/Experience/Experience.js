@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
 import Particle from "../Particle";
 import {
@@ -13,6 +13,7 @@ import { SiGoogle, SiMeta } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { AiFillRobot } from "react-icons/ai";
 import { EVENTS, trackEvent } from "../../analytics";
+import { useAnalyticsView } from "../../hooks/useAnalyticsView";
 
 const experiences = [
   {
@@ -117,6 +118,12 @@ const certifications = [
 ];
 
 function Experience() {
+  const experienceRef = useRef(null);
+  const certificationsRef = useRef(null);
+
+  useAnalyticsView(EVENTS.SECTION_VIEW, experienceRef, { section_name: "work_experience" });
+  useAnalyticsView(EVENTS.SECTION_VIEW, certificationsRef, { section_name: "certifications" });
+
   useEffect(() => {
     document.title = "Experience | Mohamad Moumneh";
   }, []);
@@ -131,7 +138,7 @@ function Experience() {
           Work <strong className="purple">Experience</strong>
         </h1>
 
-        <div className="timeline">
+        <div ref={experienceRef} className="timeline">
           {experiences.map((exp, i) => (
             <div className="timeline-item reveal" key={i}>
               <div className="timeline-dot">
@@ -163,7 +170,7 @@ function Experience() {
         </div>
 
         {/* Certifications */}
-        <p className="section-eyebrow reveal" style={{ marginTop: "72px" }}>
+        <p ref={certificationsRef} className="section-eyebrow reveal" style={{ marginTop: "72px" }}>
           Learning
         </p>
         <h2 className="project-heading reveal">

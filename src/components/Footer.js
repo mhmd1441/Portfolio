@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
-import { HiOutlineMail } from "react-icons/hi";
+import { HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 import { EVENTS, trackEvent } from "../analytics";
 
 const LOCATION = "footer";
@@ -24,10 +24,10 @@ function Footer() {
       <Container>
         <Row className="footer-main">
           {/* Brand */}
-          <Col md={4} className="footer-brand">
+          <Col xs={12} md={6} lg={5} className="footer-brand">
             <h4 className="footer-name">Mohamad Moumneh</h4>
             <p className="footer-tagline">
-              Backend &amp; Full-Stack Developer
+              Software Engineer
             </p>
             <p className="footer-location">📍 Beirut, Lebanon</p>
             <a
@@ -37,10 +37,17 @@ function Footer() {
             >
               <HiOutlineMail aria-hidden="true" /> mmoumneh14@gmail.com
             </a>
+            <a
+              href="tel:+96181809597"
+              className="footer-phone"
+              onClick={() => trackEvent(EVENTS.PHONE_CLICK, { location: LOCATION })}
+            >
+              <HiOutlinePhone aria-hidden="true" /> +961 81 809 597
+            </a>
           </Col>
 
           {/* Navigation */}
-          <Col md={4} className="footer-nav">
+          <Col xs={6} md={3} lg={3} className="footer-nav">
             <h5 className="footer-nav-heading">Navigation</h5>
             <ul className="footer-nav-links">
               {navLinks.map((link) => (
@@ -59,7 +66,7 @@ function Footer() {
           </Col>
 
           {/* Social */}
-          <Col md={4} className="footer-social-col">
+          <Col xs={6} md={3} lg={4} className="footer-social-col">
             <h5 className="footer-nav-heading">Connect</h5>
             <div className="footer-social-links">
               <a

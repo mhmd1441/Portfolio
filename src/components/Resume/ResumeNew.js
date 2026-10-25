@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Container, Row } from "react-bootstrap";
 import { AiOutlineDownload } from "react-icons/ai";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import cvPreview from "../../Assets/cv-preview.png";
 import { CV_URL, downloadCv } from "../../utils/downloadCv";
 import { EVENTS, trackEvent } from "../../analytics";
+import { useAnalyticsView } from "../../hooks/useAnalyticsView";
 
 const LOCATION = "resume_page";
 
@@ -16,6 +17,10 @@ const LOCATION = "resume_page";
  * preview itself, "Open in new tab", or "Download CV".
  */
 function ResumeNew() {
+  const resumeRef = useRef(null);
+
+  useAnalyticsView(EVENTS.SECTION_VIEW, resumeRef, { section_name: "resume_preview" });
+
   useEffect(() => {
     document.title = "Resume | Mohamad Moumneh";
   }, []);
@@ -24,7 +29,7 @@ function ResumeNew() {
     <div>
       <Container fluid className="resume-section">
         <Row className="resume">
-          <div className="resume-preview-shell">
+          <div ref={resumeRef} className="resume-preview-shell">
             <div className="resume-preview-header">
               <div>
                 <p className="resume-label">Resume</p>

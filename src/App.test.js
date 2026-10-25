@@ -28,6 +28,14 @@ test("renders the resume page with download and open actions", async () => {
   );
 });
 
+test("renders every project, including InventStock", async () => {
+  window.history.pushState({}, "", "/project");
+  render(<App />);
+
+  expect(await screen.findByText("InventStock")).toBeInTheDocument();
+  expect(screen.getByAltText("InventStock logo")).toBeInTheDocument();
+});
+
 test("shows the 404 page for unknown routes", async () => {
   window.history.pushState({}, "", "/this-page-does-not-exist");
   render(<App />);

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
@@ -6,9 +6,37 @@ import DeliverAsYouGo from "../../Assets/Projects/DeliverAsYouGo.webp";
 import portfoliologo from "../../Assets/logo.png";
 import PharmacyLogo from "../../Assets/Projects/PharmacyLogo.webp";
 import CommuTechLogo from "../../Assets/Projects/CommuTechLogo.webp";
+import MisstralsLogo from "../../Assets/Projects/MisstralsLogo.png";
 import TaskFlowLogo from "../../Assets/Projects/TaskFlowLogo.webp";
+import InventStockLogo from "../../Assets/Projects/InventStockLogo.jpg";
+import { EVENTS } from "../../analytics";
+import { useAnalyticsView } from "../../hooks/useAnalyticsView";
 
 const projects = [
+  {
+    title: "InventStock",
+    description:
+      "A multi-user inventory and counter-management system for an automotive spare-parts shop, replacing spreadsheet workflows with fast search, accurate stock control, multi-currency sales, customer debt tracking, and audited returns.",
+    tags: [".NET 8", "ASP.NET Core", "PostgreSQL", "Next.js", "TypeScript", "Docker"],
+    ghLink: "https://github.com/mhmd1441/InventStock",
+    image: { src: InventStockLogo, width: 2752, height: 1536 },
+  },
+  {
+    title: "CommuTech",
+    description:
+      "A mobile-first civic technology platform for reporting infrastructure issues, tracking citizen reports, assigning workers, and enabling supervisor oversight.",
+    tags: ["React Native", "Expo", "Laravel", "PostgreSQL"],
+    ghLink: "https://github.com/mhmd1441/CommuTech",
+    image: { src: CommuTechLogo, width: 700, height: 300 },
+  },
+  {
+    title: "Misstrals",
+    description:
+      "A luxury fashion e-commerce platform that combines editorial design, fast product discovery, secure checkout, and a privacy-first digital outfit builder.",
+    tags: ["Laravel 12", "React", "PostgreSQL", "Redis", "Meilisearch", "Stripe"],
+    ghLink: "https://github.com/mhmd1441/Misstrals",
+    image: { src: MisstralsLogo, width: 1280, height: 1280 },
+  },
   {
     title: "Deliver As You Go",
     description:
@@ -24,14 +52,6 @@ const projects = [
     tags: ["Laravel", "MySQL", "Live Chat", "Healthcare"],
     ghLink: "https://github.com/mhmd1441/Pharmacy-Project",
     image: { src: PharmacyLogo, width: 400, height: 400 },
-  },
-  {
-    title: "CommuTech",
-    description:
-      "A mobile-first civic technology platform for reporting infrastructure issues, tracking citizen reports, assigning workers, and enabling supervisor oversight.",
-    tags: ["React Native", "Expo", "Laravel", "PostgreSQL"],
-    ghLink: "https://github.com/mhmd1441/CommuTech",
-    image: { src: CommuTechLogo, width: 700, height: 300 },
   },
   {
     title: "TaskFlow",
@@ -52,6 +72,10 @@ const projects = [
 ];
 
 function Projects() {
+  const projectsRef = useRef(null);
+
+  useAnalyticsView(EVENTS.SECTION_VIEW, projectsRef, { section_name: "projects_list" });
+
   useEffect(() => {
     document.title = "Projects | Mohamad Moumneh";
   }, []);
@@ -68,9 +92,9 @@ function Projects() {
           A focused look at the systems I have built across backend APIs,
           mobile-first products, and full-stack web applications.
         </p>
-        <Row className="project-grid">
+        <Row ref={projectsRef} className="project-grid">
           {projects.map((project) => (
-            <Col md={4} className="project-card reveal" key={project.title}>
+            <Col md={6} lg={4} className="project-card reveal" key={project.title}>
               <ProjectCard
                 imgPath={project.image.src}
                 imgWidth={project.image.width}
@@ -79,6 +103,7 @@ function Projects() {
                 description={project.description}
                 tags={project.tags}
                 ghLink={project.ghLink}
+                demoLink={project.demoLink}
               />
             </Col>
           ))}

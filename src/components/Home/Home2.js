@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import myImg from "../../Assets/avatar.svg";
 import Tilt from "react-parallax-tilt";
 import { HiOutlineMail, HiArrowRight } from "react-icons/hi";
-import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
 import { EVENTS, trackEvent } from "../../analytics";
+import { useAnalyticsView } from "../../hooks/useAnalyticsView";
 
 const LOCATION = "home_contact";
 
 function Home2() {
+  const introductionRef = useRef(null);
+  const contactRef = useRef(null);
+
+  useAnalyticsView(EVENTS.SECTION_VIEW, introductionRef, { section_name: "home_introduction" });
+  useAnalyticsView(EVENTS.SECTION_VIEW, contactRef, { section_name: "home_contact" });
+
   return (
     <Container fluid className="home-about-section">
       <Container>
-        <Row className="intro-row">
+        <Row ref={introductionRef} className="intro-row">
           <Col md={8} className="home-about-description">
             <p className="section-eyebrow">Introduction</p>
             <h2 className="section-title">
@@ -53,7 +60,7 @@ function Home2() {
 
         {/* Contact */}
         <Row>
-          <Col md={12} className="contact-section">
+          <Col ref={contactRef} md={12} className="contact-section">
             <p className="section-eyebrow">Get in touch</p>
             <h2 className="section-title">
               Let&apos;s build something <span className="purple">together</span>
@@ -81,16 +88,6 @@ function Home2() {
               >
                 <FaLinkedinIn aria-hidden="true" />
                 <span>LinkedIn</span>
-              </a>
-              <a
-                href="https://github.com/Mhmd1441"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-link"
-                onClick={() => trackEvent(EVENTS.GITHUB_CLICK, { location: LOCATION })}
-              >
-                <FaGithub aria-hidden="true" />
-                <span>GitHub</span>
               </a>
             </div>
           </Col>

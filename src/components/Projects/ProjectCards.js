@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useRef } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { CgWebsite } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
 import { EVENTS, trackEvent } from "../../analytics";
+import { useAnalyticsView } from "../../hooks/useAnalyticsView";
 
 function ProjectCards(props) {
+  const cardRef = useRef(null);
+
+  useAnalyticsView(EVENTS.PROJECT_VIEW, cardRef, { project_name: props.title });
+
   return (
-    <Card className="project-card-view">
-      <Card.Img
-        variant="top"
-        src={props.imgPath}
-        width={props.imgWidth}
-        height={props.imgHeight}
-        loading="lazy"
-        decoding="async"
-        alt={`${props.title} logo`}
-      />
+    <Card ref={cardRef} className="project-card-view">
+      {props.imgPath && (
+        <Card.Img
+          variant="top"
+          src={props.imgPath}
+          width={props.imgWidth}
+          height={props.imgHeight}
+          loading="lazy"
+          decoding="async"
+          alt={`${props.title} logo`}
+        />
+      )}
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.description}</Card.Text>
@@ -42,7 +48,6 @@ function ProjectCards(props) {
           >
             <BsGithub aria-hidden="true" /> &nbsp;GitHub
           </Button>
-
           {props.demoLink && (
             <Button
               variant="primary"
@@ -57,7 +62,7 @@ function ProjectCards(props) {
                 })
               }
             >
-              <CgWebsite aria-hidden="true" /> &nbsp;Demo
+              Live Demo
             </Button>
           )}
         </div>
